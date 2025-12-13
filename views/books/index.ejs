@@ -23,10 +23,20 @@
         book.status %>
         <br />
         <!--SHOW BOOK -->
-        <a href="/users/<%= user._id %>/books/<%= book._id %>">Book Details</a>
+        <form
+          action="/users/<%= user._id %>/books/<%= book._id %>"
+          method="GET"
+        >
+          <button type="submit">Book Details</button>
+        </form>
         <br />
         <!-- EDIT BOOK -->
-        <a href="/users/<%= user._id %>/books/<%= book._id %>/edit">Edit</a>
+        <form
+          action="/users/<%= user._id %>/books/<%= book._id %>/edit"
+          method="GET"
+        >
+          <button type="submit">Edit</button>
+        </form>
         <br />
         <!-- DELETE BOOK -->
         <form

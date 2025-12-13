@@ -38,13 +38,14 @@ router.post('/', async (req, res) => {
     res.redirect(`/users/${user._id}/books`);
 });
 
-  // SHOW - GET /users/:userId/books/:itemId
+  // SHOW - GET /users/:userId/books/:bookId
   router.get('/:itemId', async (req, res) => {
     try {
       const user = await User.findById(req.session.user._id);
       const book = user.bookshelf.id(req.params.itemId);
       
       res.render('books/show.ejs', {
+        user,
         book
       });
     } catch (error) {
@@ -78,9 +79,9 @@ router.post('/', async (req, res) => {
       const user = await User.findById(req.session.user._id);
       const book = user.bookshelf.id(req.params.itemId);
 
-      res.locals.book = book;
+      // res.locals.book = book;
 
-      res.render('books/edit.ejs');
+      res.render('books/edit.ejs', { user, book });
 
     } catch (error) {
       console.log(error);
