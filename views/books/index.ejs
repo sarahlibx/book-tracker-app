@@ -11,7 +11,10 @@
     <%- include('../partials/_navbar.ejs') %>
 
     <h1>Welcome to your bookshelf, <%= user.username %>!</h1>
-
+    <!-- BOOK ADDED FLASH MESSAGE -->
+    <% if (typeof message !== 'undefined') { %>
+    <p><%= message %></p>
+    <% } %>
     <!-- NEW BOOK -->
     <a href="/users/<%= user._id %>/books/new">Add New Book</a>
 

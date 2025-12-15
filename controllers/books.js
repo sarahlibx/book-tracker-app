@@ -15,7 +15,8 @@ try {
 
     } catch (error) {
       console.log(error);
-      res.redirect('/');
+      res.render("error.ejs", { msg: error.message });
+      // res.redirect('/');
     }
 });
 
@@ -26,7 +27,7 @@ router.get('/new', (req, res) => {
 
 // CREATE - POST /users/:userId/books
 router.post('/', async (req, res) => {
-    console.log(req.body);
+  try {
     const user = await User.findById(req.session.user._id);
     user.bookshelf.push({ 
         title: req.body.title,
@@ -34,12 +35,18 @@ router.post('/', async (req, res) => {
         status: req.body.status 
     });
     await user.save();
-
+    req.session.message = "Book successfully added.";
     res.redirect(`/users/${user._id}/books`);
+
+  } catch (error) {
+    console.log(error);
+    req.session.message = error.message;
+    res.redirect('/books');
+  }
 });
 
-  // SHOW - GET /users/:userId/books/:bookId
-  router.get('/:itemId', async (req, res) => {
+// SHOW - GET /users/:userId/books/:bookId
+router.get('/:itemId', async (req, res) => {
     try {
       const user = await User.findById(req.session.user._id);
       const book = user.bookshelf.id(req.params.itemId);
@@ -50,26 +57,25 @@ router.post('/', async (req, res) => {
       });
     } catch (error) {
       console.log(error);
-      res.redirect('/');
+      res.render("error.ejs", { msg: error.message });
+      // res.redirect('/');
     }
   });
 
    // DELETE /users/:userId/books/:itemId
   router.delete('/:itemId', async (req, res) => {
     try {
-      // Look up the user from req.session
       const user = await User.findById(req.session.user._id);
-      // Use the Mongoose .deleteOne() method to delete
-      // a book using the id supplied from req.params
+      
       user.bookshelf.id(req.params.itemId).deleteOne();
-      // Save changes to the user
       await user.save();
-      // Redirect back to the applications index view
+      
       res.redirect(`/users/${user._id}/books`);
+
     } catch (error) {
-      // If any errors, log them and redirect back home
       console.log(error);
-      res.redirect('/');
+      res.render("error.ejs", { msg: error.message });
+      // res.redirect('/');
     }
   });
 
@@ -85,7 +91,8 @@ router.post('/', async (req, res) => {
 
     } catch (error) {
       console.log(error);
-      res.redirect('/');
+      res.render("error.ejs", { msg: error.message });
+      // res.redirect('/');
     }
   });
 
@@ -103,7 +110,8 @@ router.post('/', async (req, res) => {
       );
     } catch (error) {
       console.log(error);
-      res.redirect('/');
+      res.render("error.ejs", { msg: error.message });
+      // res.redirect('/');
     }
   });
 
