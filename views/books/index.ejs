@@ -8,9 +8,9 @@
     <section class="user-bookshelf">
       <h1>Welcome to your bookshelf, <%= user.username %>!</h1>
       <!-- BOOK ADDED FLASH MESSAGE -->
-      <% if (typeof message !== 'undefined') { %>
-      <p><%= message %></p>
-      <% } %>
+      <%_ if (typeof message !== 'undefined') { _%>
+      <h3 id="flash-message" class="alert"><%= message %></h3>
+      <%_ } _%>
       <!-- NEW BOOK -->
       <h3 class="add-book">
         <a class="add-new-book" href="/users/<%= user._id %>/books/new"

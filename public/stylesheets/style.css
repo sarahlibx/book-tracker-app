@@ -322,6 +322,15 @@ nav {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* fade out for flash message */
+.alert {
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-out{
+  opacity: 0;
+}
+
 /* modal styling for show page */
 .modal { 
   display: none; 

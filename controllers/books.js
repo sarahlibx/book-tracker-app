@@ -114,6 +114,7 @@ router.get('/:itemId', async (req, res) => {
       book.set(req.body);
       
       await user.save();
+      req.session.message = "Book successfully edited.";
       res.redirect(
         `/users/${user._id}/books/${req.params.itemId}`
       );

@@ -9,6 +9,10 @@
     <section class="show-selected-book">
       <h1 class="selected-book">Book on shelf: <%= book.title %></h1>
       <h2 class="title-author"><%= book.title %> by <%= book.author %></h2>
+      <!-- BOOK EDITED FLASH MESSAGE -->
+      <%_ if (typeof message !== 'undefined') { _%>
+      <h3 id="flash-message" class="alert"><%= message %></h3>
+      <%_ } _%>
 
       <% if (book.review || book.rating) { %>
       <p class="rating-review">
