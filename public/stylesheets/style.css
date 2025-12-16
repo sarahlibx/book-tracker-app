@@ -231,3 +231,142 @@ nav {
 .faq-questions p {
   font-size: 1.1em;
 }
+
+/* styling for bookshelf/index page */
+
+.user-bookshelf {
+  background-color: #f0f0f0; 
+  padding: 20px;            
+  margin: 70px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+}
+
+ .add-new-book {
+  color: white;
+  background-color: #f95285;
+  padding: 10px;
+  height: 30px;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* .add-new-book:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+} */
+
+.book-details {
+  display: flex;
+}
+
+.books-on-shelf {
+  list-style: none;
+  padding: 0;
+  font-size: 1.2em;
+}
+.book {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* styling for show page */
+.show-selected-book {
+  background-color: #f0f0f0; 
+  padding: 20px;            
+  margin: 70px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;       
+}
+
+.selected-book {
+  display: flex;
+  justify-content: center;
+}
+
+.title-author {
+  display: flex;
+}
+
+.rating-review {
+  display: flex;
+}
+
+.btns {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.edit-btn, .delete-btn, .back-btn, .details-btn {
+  font-family: "Outfit", sans-serif;
+  transition: transform 0.2s ease-in-out;
+  color: white;
+  font-weight: bold;
+  background-color: #f95285;
+  font-size: 1em;
+  padding: 10px;
+  border: none;
+}
+
+.edit-btn:hover, .delete-btn:hover, .back-btn:hover, .details-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* modal styling for show page */
+.modal { 
+  display: none; 
+  position: fixed; 
+  z-index: 100; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content { 
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  width: 400px;
+  border-radius: 6px;
+}
+
+.close-btn { 
+  color: #aaa; 
+  float: right; 
+  font-size: 28px; 
+  font-weight: bold; 
+}
+
+.close-btn:hover, .close-btn:focus { 
+  color: black; 
+  text-decoration: none; 
+  cursor: pointer; 
+}
+
+.cancel-btn {
+  font-family: "Outfit", sans-serif;
+  transition: transform 0.2s ease-in-out;
+  color: white;
+  font-weight: 400;
+  background-color: #0f30dd;
+  font-size: 1em;
+  padding: 10px;
+  border: none;
+}
+
+.cancel-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+}

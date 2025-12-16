@@ -5,52 +5,64 @@
   <%- include("../partials/_head.ejs") %>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-
-    <h1>Welcome to your bookshelf, <%= user.username %>!</h1>
-    <!-- BOOK ADDED FLASH MESSAGE -->
-    <% if (typeof message !== 'undefined') { %>
-    <p><%= message %></p>
-    <% } %>
-    <!-- NEW BOOK -->
-    <a href="/users/<%= user._id %>/books/new">Add New Book</a>
-
-    <% if (bookshelf && bookshelf.length > 0) { %>
-    <ul>
-      <% bookshelf.forEach((book) => { %>
-      <li>
-        Title: <%= book.title %> | Author: <%= book.author %> | Status: <%=
-        book.status %>
-        <br />
-        <!--SHOW BOOK -->
-        <form
-          action="/users/<%= user._id %>/books/<%= book._id %>"
-          method="GET"
+    <section class="user-bookshelf">
+      <h1>Welcome to your bookshelf, <%= user.username %>!</h1>
+      <!-- BOOK ADDED FLASH MESSAGE -->
+      <% if (typeof message !== 'undefined') { %>
+      <p><%= message %></p>
+      <% } %>
+      <!-- NEW BOOK -->
+      <h3 class="add-book">
+        <a class="add-new-book" href="/users/<%= user._id %>/books/new"
+          >Add New Book</a
         >
-          <button type="submit">Book Details</button>
-        </form>
-        <br />
-        <!-- EDIT BOOK -->
-        <form
-          action="/users/<%= user._id %>/books/<%= book._id %>/edit"
-          method="GET"
-        >
-          <button type="submit">Edit</button>
-        </form>
-        <br />
-        <!-- DELETE BOOK -->
-        <form
-          action="/users/<%= user._id %>/books/<%= book._id %>?_method=DELETE"
-          method="POST"
-        >
-          <button type="submit">Delete</button>
-          <br />
-        </form>
-      </li>
-      <% }); %>
-    </ul>
-    <% } else { %>
-    <p>No books on your bookshelf yet.</p>
-    <% } %>
+      </h3>
+      <div class="book-details">
+        <% if (bookshelf && bookshelf.length > 0) { %>
+        <ul class="books-on-shelf">
+          <% bookshelf.forEach((book) => { %>
+          <li class="book">
+            Title: <%= book.title %> | Author: <%= book.author %> | Status: <%=
+            book.status %>
+            <br />
+            <div class="btns">
+              <!--SHOW BOOK -->
+              <form
+                action="/users/<%= user._id %>/books/<%= book._id %>"
+                method="GET"
+              >
+                <button type="submit" class="details-btn">Book Details</button>
+              </form>
+              <br />
+              <!-- EDIT BOOK -->
+              <form
+                action="/users/<%= user._id %>/books/<%= book._id %>/edit"
+                method="GET"
+              >
+                <button type="submit" class="edit-btn">Edit</button>
+              </form>
+              <br />
+              <!-- DELETE BTN -->
+              <button
+                type="button"
+                class="delete-btn open-modal-delete-btn"
+                data-book-id="<%= book._id %>"
+                data-book-title="<%= book.title %>"
+                data-user-id="<%= user._id %>"
+              >
+                Delete book from my shelf
+              </button>
+            </div>
+          </li>
+          <% }); %>
+        </ul>
+        <% } else { %>
+        <p>No books on your bookshelf yet.</p>
+        <% } %>
+        <!-- DELETE MODAL (Hidden by default) -->
+        <%- include('../partials/_deleteModal.ejs') %>
+      </div>
+    </section>
   </body>
   <%- include("../partials/_footer.ejs") %>
 </html>

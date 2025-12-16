@@ -6,44 +6,52 @@
 
   <body>
     <%- include('../partials/_navbar.ejs') %>
+    <section class="show-selected-book">
+      <h1 class="selected-book">Book on shelf: <%= book.title %></h1>
+      <h2 class="title-author"><%= book.title %> by <%= book.author %></h2>
 
-    <h1>Book on shelf: <%= book.title %></h1>
-    <h2><%= book.title %> by <%= book.author %></h2>
+      <% if (book.review) { %>
+      <p class="rating-review">
+        Review: <%= book.review %> <% if (book.rating) { %> | Rating: <% const
+        maxStars = 5; %> <% for (let i = 1; i <= maxStars; i++) { %> <%= i <=
+        book.rating ? "★" : "☆" %> <% } %> <% } %>
+      </p>
+      <% } %>
 
-    <% if (book.review) { %>
-    <p>
-      Review: <%= book.review %> <% if (book.rating) { %> | Rating: <% const
-      maxStars = 5; %> <% for (let i = 1; i <= maxStars; i++) { %> <%= i <=
-      book.rating ? "★" : "☆" %> <% } %> <% } %>
-    </p>
-    <% } %>
+      <br />
+      <div class="btns">
+        <!-- EDIT BTN-->
+        <form
+          action="/users/<%= user._id %>/books/<%= book._id %>/edit"
+          method="GET"
+        >
+          <button type="submit" class="edit-btn">Edit book details</button>
+        </form>
 
-    <br />
+        <br />
 
-    <!-- EDIT BTN-->
-    <form
-      action="/users/<%= user._id %>/books/<%= book._id %>/edit"
-      method="GET"
-    >
-      <button type="submit">Edit</button>
-    </form>
+        <!-- DELETE BTN -->
+        <button
+          type="button"
+          class="delete-btn open-modal-delete-btn"
+          data-book-id="<%= book._id %>"
+          data-book-title="<%= book.title %>"
+          data-user-id="<%= user._id %>"
+        >
+          Delete book from my shelf
+        </button>
 
-    <br />
+        <!-- DELETE MODAL (Hidden by default) -->
+        <%- include('../partials/_deleteModal.ejs') %>
 
-    <!-- DELETE BTN -->
-    <form
-      action="/users/<%= user._id %>/books/<%= book._id %>?_method=DELETE"
-      method="POST"
-    >
-      <button type="submit">Delete this book from my shelf</button>
-    </form>
+        <br />
 
-    <br />
-
-    <!-- BACK BTN -->
-    <form action="/users/<%= user._id %>/books" method="GET">
-      <button type="submit">Back to Bookshelf</button>
-    </form>
+        <!-- BACK BTN -->
+        <form action="/users/<%= user._id %>/books" method="GET">
+          <button type="submit" class="back-btn">Back to Bookshelf</button>
+        </form>
+      </div>
+    </section>
   </body>
   <%- include("../partials/_footer.ejs") %>
 </html>
