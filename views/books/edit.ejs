@@ -6,44 +6,58 @@
 
   <body>
     <%- include('../partials/_navbar.ejs') %>
-
-    <h1>Edit <%= book.title %></h1>
+    <section class="page-section">
+  <div class="page-content">
+    <div class="edit-book-form">
+    <h1 class="editing-book">Edit <%= book.title %></h1>
 
     <form
       action="/users/<%= user._id %>/books/<%= book._id %>?_method=PUT"
       method="POST"
     >
+    <section class="edit-boxes">
+      <div class="input-box">
       <!-- Title -->
-      <label for="title">Title:</label>
-      <input 
+        <label for="title">Title:</label>
+        <input 
+        class="form-box"
         type="text" 
         name="title" 
         id="title" 
         value="<%= book.title %>" 
-      />
+        />
+      </div>
 
+      <div class="input-box">
       <!-- Author -->
       <label for="author">Author:</label>
-      <input 
+      <input
+        class="form-box" 
         type="text" 
         name="author" 
         id="author" 
         value="<%= book.author %>" 
       />
+      </div>    
 
+      <div class="input-box">
       <!-- Status -->
       <label for="status">Status:</label>
-      <select id="status" name="status">
+      <select id="status" name="status" class="form-box">
         <option value="Read" <%= book.status === 'Read' ? 'selected' : '' %>>Read</option>
         <option value="In Progress" <%= book.status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
         <option value="Did Not Finish" <%= book.status === 'Did Not Finish' ? 'selected' : '' %>>Did Not Finish</option>
         <option value="To Be Read" <%= book.status === 'To Be Read' ? 'selected' : '' %>>To Be Read</option>
       </select>
+      </div>
 
+      <div class="input-box">
       <!-- Review -->
       <label for="review">Review:</label>
-      <textarea name="review" id="review"><%= book.review %></textarea>
+      <textarea name="review" id="review" class="form-box"><%= book.review %></textarea>
+      </div>
 
+      <div class="input-box">
       <!-- Rating -->
       <label for="rating">Rating:</label>
       <fieldset class="rating">
@@ -61,12 +75,17 @@
           <label for="star<%= i %>" title="<%= i %> stars">★</label>
         <% } %>
       </fieldset>
+      </div>
+    </section>
 
-      <!-- Submit -->
+      <div class="update-btn">
       <button type="submit">Update bookshelf</button>
     </form>
-
+    </div>
     <a href="/users/<%= user._id %>/books">Back</a>
+    </div>
+    </div>
+    </section>
   </body>
 
   <%- include("../partials/_footer.ejs") %>

@@ -6,6 +6,8 @@
 
   <body>
     <%- include('../partials/_navbar.ejs') %>
+    <section class="page-section">
+  <div class="page-content">
     <section class="show-selected-book">
       <h1 class="selected-book">Book on shelf: <%= book.title %></h1>
       <h2 class="title-author"><%= book.title %> by <%= book.author %></h2>
@@ -62,6 +64,8 @@
           <button type="submit" class="back-btn">Back to Bookshelf</button>
         </form>
       </div>
+    </section>
+    </div>
     </section>
   </body>
   <%- include("../partials/_footer.ejs") %>

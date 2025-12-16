@@ -5,62 +5,68 @@
   <%- include("../partials/_head.ejs") %>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <section class="user-bookshelf">
-      <h1>Welcome to your bookshelf, <%= user.username %>!</h1>
-      <!-- BOOK ADDED FLASH MESSAGE -->
-      <%_ if (typeof message !== 'undefined') { _%>
-      <h3 id="flash-message" class="alert"><%= message %></h3>
-      <%_ } _%>
-      <!-- NEW BOOK -->
-      <h3 class="add-book">
-        <a class="add-new-book" href="/users/<%= user._id %>/books/new"
-          >Add New Book</a
-        >
-      </h3>
-      <div class="book-details">
-        <% if (bookshelf && bookshelf.length > 0) { %>
-        <ul class="books-on-shelf">
-          <% bookshelf.forEach((book) => { %>
-          <li class="book">
-            Title: <%= book.title %> | Author: <%= book.author %> | Status: <%=
-            book.status %>
-            <br />
-            <div class="btns">
-              <!--SHOW BOOK -->
-              <form
-                action="/users/<%= user._id %>/books/<%= book._id %>"
-                method="GET"
-              >
-                <button type="submit" class="details-btn">Book Details</button>
-              </form>
-              <br />
-              <!-- EDIT BOOK -->
-              <form
-                action="/users/<%= user._id %>/books/<%= book._id %>/edit"
-                method="GET"
-              >
-                <button type="submit" class="edit-btn">Edit</button>
-              </form>
-              <br />
-              <!-- DELETE BTN -->
-              <button
-                type="button"
-                class="delete-btn open-modal-delete-btn"
-                data-book-id="<%= book._id %>"
-                data-book-title="<%= book.title %>"
-                data-user-id="<%= user._id %>"
-              >
-                Delete book from my shelf
-              </button>
-            </div>
-          </li>
-          <% }); %>
-        </ul>
-        <% } else { %>
-        <p>No books on your bookshelf yet.</p>
-        <% } %>
-        <!-- DELETE MODAL (Hidden by default) -->
-        <%- include('../partials/_deleteModal.ejs') %>
+    <section class="page-section">
+      <div class="page-content">
+        <section class="user-bookshelf">
+          <h1>Welcome to your bookshelf, <%= user.username %>!</h1>
+          <!-- BOOK ADDED FLASH MESSAGE -->
+          <%_ if (typeof message !== 'undefined') { _%>
+          <h3 id="flash-message" class="alert"><%= message %></h3>
+          <%_ } _%>
+          <!-- NEW BOOK -->
+          <h3 class="add-book">
+            <a class="add-new-book" href="/users/<%= user._id %>/books/new"
+              >Add New Book</a
+            >
+          </h3>
+          <div class="book-details">
+            <% if (bookshelf && bookshelf.length > 0) { %>
+            <ul class="books-on-shelf">
+              <% bookshelf.forEach((book) => { %>
+              <li class="book">
+                Title: <%= book.title %> | Author: <%= book.author %> | Status:
+                <%= book.status %>
+                <br />
+                <div class="btns">
+                  <!--SHOW BOOK -->
+                  <form
+                    action="/users/<%= user._id %>/books/<%= book._id %>"
+                    method="GET"
+                  >
+                    <button type="submit" class="details-btn">
+                      Book Details
+                    </button>
+                  </form>
+                  <br />
+                  <!-- EDIT BOOK -->
+                  <form
+                    action="/users/<%= user._id %>/books/<%= book._id %>/edit"
+                    method="GET"
+                  >
+                    <button type="submit" class="edit-btn">Edit</button>
+                  </form>
+                  <br />
+                  <!-- DELETE BTN -->
+                  <button
+                    type="button"
+                    class="delete-btn open-modal-delete-btn"
+                    data-book-id="<%= book._id %>"
+                    data-book-title="<%= book.title %>"
+                    data-user-id="<%= user._id %>"
+                  >
+                    Delete book from my shelf
+                  </button>
+                </div>
+              </li>
+              <% }); %>
+            </ul>
+            <% } else { %>
+            <p>No books on your bookshelf yet.</p>
+            <% } %>
+            <!-- DELETE MODAL (Hidden by default) -->
+            <%- include('../partials/_deleteModal.ejs') %>
+          </div>
+        </section>
       </div>
     </section>
   </body>
