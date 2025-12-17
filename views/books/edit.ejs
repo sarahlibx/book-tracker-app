@@ -7,17 +7,18 @@
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <section class="page-section">
-  <div class="page-content">
-    <div class="edit-book-form">
-    <h1 class="editing-book">Edit <%= book.title %></h1>
+      <div class="page-content">
+      <div class="edit-book-form">
+        <h1 class="editing-book">Edit: <%= book.title %></h1>
 
-    <form
-      action="/users/<%= user._id %>/books/<%= book._id %>?_method=PUT"
-      method="POST"
-    >
-    <section class="edit-boxes">
-      <div class="input-box">
-      <!-- Title -->
+        <form
+        action="/users/<%= user._id %>/books/<%= book._id %>?_method=PUT"
+        method="POST"
+        >
+        <section class="edit-boxes">
+        
+          <div class="input-box">
+        <!-- Title -->
         <label for="title">Title:</label>
         <input 
         class="form-box"
@@ -78,11 +79,11 @@
       </div>
     </section>
 
-      <div class="update-btn">
-      <button type="submit">Update bookshelf</button>
+      <div class="update-btn-div">
+      <button type="submit" class="update-btn edit-update">Update bookshelf</button>
     </form>
     </div>
-    <a href="/users/<%= user._id %>/books">Back</a>
+    <a class='back-btn edit-back' href="/users/<%= user._id %>/books">Back</a>
     </div>
     </div>
     </section>

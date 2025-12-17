@@ -249,40 +249,6 @@ nav {
   font-size: 1.1em;
 }
 
-/* styling for bookshelf/index page */
-.user-bookshelf {
-  background-color: #f0f0f0; 
-  padding: 20px;            
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;  
-}
-
- .add-new-book {
-  color: white;
-  background-color: #f95285;
-  padding: 10px;
-  height: 30px;
-  transition: transform 0.2s ease-in-out;
-}
-
-.book-details {
-  display: flex;
-}
-
-.books-on-shelf {
-  list-style: none;
-  padding: 0;
-  font-size: 1.2em;
-}
-.book {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 /* styling for show page */
 .show-selected-book {
   background-color: #f0f0f0; 
@@ -316,7 +282,7 @@ nav {
   margin: 20px 0;
 }
 
-.edit-btn, .delete-btn, .back-btn, .details-btn {
+.edit-btn, .delete-btn, .back-btn, .details-btn, .update-btn {
   font-family: "Outfit", sans-serif;
   transition: transform 0.2s ease-in-out;
   color: white;
@@ -327,7 +293,7 @@ nav {
   border: none;
 }
 
-.edit-btn:hover, .delete-btn:hover, .back-btn:hover, .details-btn:hover {
+.edit-btn:hover, .delete-btn:hover, .back-btn:hover, .details-btn:hover, .update-btn:hover {
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -408,6 +374,40 @@ nav {
   color: #ccc;
 }
 
+/* styling for bookshelf/index page */
+.user-bookshelf {
+  background-color: #f0f0f0; 
+  padding: 20px;            
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+}
+
+ .add-new-book {
+  color: white;
+  background-color: #f95285;
+  padding: 10px;
+  height: 30px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.book-details {
+  display: flex;
+}
+
+.books-on-shelf {
+  list-style: none;
+  padding: 0;
+  font-size: 1.2em;
+}
+.book {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Highlight stars on hover */
 .rating label:hover,
 .rating label:hover ~ label {
@@ -419,7 +419,7 @@ nav {
   color: gold;
 }
 
-/* styling for edit form & page */
+/* styling for edit & new page */
 .edit-book-form {
   background-color: #f0f0f0; 
   padding: 20px;            
@@ -444,8 +444,9 @@ nav {
 .input-box {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 10px;
+  gap: 10px;
 }
 
 .form-box {
@@ -475,4 +476,21 @@ fieldset {
   border: none;
 }
 
+.update-btn-div {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-back {
+  margin: 10px;
+  background-color: #0f30dd;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-family: "Outfit", sans-serif; 
+  font-size: 1em;                    
+  color: #999999;                     
+  font-weight: 400;                  
+}
 

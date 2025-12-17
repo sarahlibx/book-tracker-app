@@ -2,45 +2,78 @@
 <!DOCTYPE html>
 <html>
   <%- include("../partials/_head.ejs") %>
+
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <section class="page-section">
       <div class="page-content">
-        <h1>Add a New Book to Your Shelf</h1>
+        <div class="edit-book-form">
+          <h1 class="adding-book">Add a New Book to Your Shelf</h1>
 
-        <form action="/users/<%= user._id %>/books" method="POST">
-          <label for="title">Title:</label>
-          <input type="text" id="title" name="title" required />
+          <form action="/users/<%= user._id %>/books" method="POST">
+            <section class="edit-boxes">
+              <div class="input-box">
+                <!-- Title -->
+                <label for="title">Title:</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  class="form-box"
+                  placeholder="required"
+                  required
+                />
+              </div>
 
-          <label for="author">Author:</label>
-          <input type="text" id="author" name="author" />
+              <!-- Author -->
+              <div class="input-box">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" class="form-box" placeholder="required"/>
+              </div>
 
-          <label for="status">Status:</label>
-          <select id="status" name="status">
-            <option value="Read">Read</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Did Not Finish">Did Not Finish</option>
-            <option value="To Be Read">To Be Read</option>
-          </select>
+              <!-- Status -->
+              <div class="input-box">
+                <label for="status">Status:</label>
+                <select id="status" name="status" class="form-box">
+                  <option value="Read">Read</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Did Not Finish">Did Not Finish</option>
+                  <option value="To Be Read">To Be Read</option>
+                </select>
+              </div>
 
-          <label for="review">Review:</label>
-          <textarea name="review" id="review"></textarea>
+              <!-- Review -->
+              <div class="input-box">
+                <label for="review">Review:</label>
+                <textarea
+                  name="review"
+                  id="review"
+                  placeholder="Write your review..."
+                  class="form-box"
+                ></textarea>
+              </div>
 
-          <!-- Rating -->
-          <label for="rating">Rating:</label>
-          <fieldset class="rating">
-            <% const ratingValue = (typeof book !== 'undefined' && book.rating)
-            ? Number(book.rating) : null; for (let i = 5; i >=1; i--) { %>
-            <input type="radio" id="star<%= i %>" name="rating" value="<%= i %>"
-            <%= ratingValue === i ? 'checked' : '' %> />
-            <label for="star<%= i %>" title="<%= i %> stars">★</label>
-            <% } %>
-          </fieldset>
+              <!-- Rating -->
+              <div class="input-box">
+                <label for="rating">Rating:</label>
+                <fieldset class="rating">
+                  <% const ratingValue = (typeof book !== 'undefined' &&
+                  book.rating) ? Number(book.rating) : null; for (let i = 5; i
+                  >=1; i--) { %> <input type="radio" id="star<%= i %>"
+                  name="rating" value="<%= i %>" <%= ratingValue === i ?
+                  'checked' : '' %> />
+                  <label for="star<%= i %>" title="<%= i %> stars">★</label>
+                  <% } %>
+                </fieldset>
+              </div>
+            </section>
+            <div class="update-btn-div">
+            <button type="submit" class="update-btn">Add Book</button>
+          </form>
+          </div>
 
-          <button type="submit">Add Book</button>
-        </form>
-
-        <p><a href="/users/<%= user._id %>/books">Back to Bookshelf</a></p>
+          <a class='back-btn edit-back' href="/users/<%= user._id %>/books">Back to Bookshelf</a>
+        </div>
       </div>
     </section>
   </body>
