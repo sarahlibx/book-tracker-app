@@ -7,64 +7,60 @@
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <section class="page-section">
-  <div class="page-content">
-    <section class="show-selected-book">
-      <h1 class="selected-book">Book on shelf: <%= book.title %></h1>
-      <h2 class="title-author"><%= book.title %> by <%= book.authors %></h2>
-      <!-- BOOK EDITED FLASH MESSAGE -->
-      <%_ if (typeof message !== 'undefined') { _%>
-      <h3 id="flash-message" class="alert"><%= message %></h3>
-      <%_ } _%>
+      <div class="page-content">
+        <section class="show-selected-book">
+          <h1 class="selected-book">Book on shelf: <%= book.title %></h1>
 
-      <% if (book.review || book.rating) { %>
-      <p class="rating-review">
-        <% if (book.review) { %>
-        Review: <%= book.review %></p>
-      <% } %>
+          <h2 class="title-author"><%= book.title %> by <%= book.authors %></h2>
 
-      <% if (book.rating) { %> 
-        Rating: 
-      <% for (let i = 1; i <= 5; i++) { %>
-      <%= i <= book.rating ? "★" : "☆"%> 
-      <% } %> 
-      <% } %>
-      </p>
-      <% } %>
+          <%# BOOK EDITED FLASH MESSAGE %> <%_ if (typeof message !==
+          'undefined') { _%>
+          <h3 id="flash-message" class="alert"><%= message %></h3>
+          <%_ } _%> <%# CONDITIONAL VIEWS FOR EACH BOOK %> <% if (book.review ||
+          book.rating) { %>
+          <p class="review">
+            <% if (book.review) { %> Review: <%= book.review %> <% } %>
+          </p>
+          <p class="rating">
+            <% if (book.rating) { %> Rating: <% for (let i = 1; i <= 5; i++) {
+            %> <%= i <= book.rating ? "★" : "☆"%> <% } %> <% } %>
+          </p>
+          <% } %>
 
-      <div class="btns">
-        <!-- EDIT BTN-->
-        <form
-          action="/users/<%= user._id %>/books/<%= book._id %>/edit"
-          method="GET"
-        >
-          <button type="submit" class="edit-btn">Edit book details</button>
-        </form>
+          <div class="btns">
+            <%# EDIT BTN %>
+            <form
+              action="/users/<%= user._id %>/books/<%= book._id %>/edit"
+              method="GET"
+            >
+              <button type="submit" class="edit-btn">Edit book details</button>
+            </form>
 
-        <br />
+            <br />
 
-        <!-- DELETE BTN -->
-        <button
-          type="button"
-          class="delete-btn open-modal-delete-btn"
-          data-book-id="<%= book._id %>"
-          data-book-title="<%= book.title %>"
-          data-user-id="<%= user._id %>"
-        >
-          Delete book from my shelf
-        </button>
+            <%# DELETE BTN %>
+            <button
+              type="button"
+              class="delete-btn open-modal-delete-btn"
+              data-book-id="<%= book._id %>"
+              data-book-title="<%= book.title %>"
+              data-user-id="<%= user._id %>"
+            >
+              Delete book from my shelf
+            </button>
 
-        <!-- DELETE MODAL (Hidden by default) -->
-        <%- include('../partials/_deleteModal.ejs') %>
+            <%# DELETE MODAL (Hidden by default) %> <%-
+            include('../partials/_deleteModal.ejs') %>
 
-        <br />
+            <br />
 
-        <!-- BACK BTN -->
-        <form action="/users/<%= user._id %>/books" method="GET">
-          <button type="submit" class="back-btn">Back to Bookshelf</button>
-        </form>
+            <%# BACK BTN %>
+            <form action="/users/<%= user._id %>/books" method="GET">
+              <button type="submit" class="back-btn">Back to Bookshelf</button>
+            </form>
+          </div>
+        </section>
       </div>
-    </section>
-    </div>
     </section>
   </body>
   <%- include("../partials/_footer.ejs") %>

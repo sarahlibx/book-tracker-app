@@ -6,9 +6,11 @@
     <section class="page-section">
       <div class="page-content">
         <h1>Create a new account!</h1>
+
         <form action="/auth/sign-up" method="POST">
           <label class="auth-input" for="username">Username:</label>
           <input class="auth-input" type="text" name="username" id="username" />
+
           <label class="auth-input" for="password">Password:</label>
           <input
             class="auth-input"
@@ -16,6 +18,7 @@
             name="password"
             id="password"
           />
+
           <label class="auth-input" for="confirmPassword"
             >Confirm Password:</label
           >
@@ -25,9 +28,12 @@
             name="confirmPassword"
             id="confirmPassword"
           />
+
           <button class="auth-btn auth-input" type="submit">Sign up</button>
         </form>
+
         <br />
+
         <a href="/">Go Back</a>
       </div>
     </section>

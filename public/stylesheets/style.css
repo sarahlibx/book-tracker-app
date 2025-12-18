@@ -625,7 +625,7 @@ textarea::placeholder {
   line-height: 20px;
 }
 
-.search-btn {
+.search-btn, .error-btn {
   font-family: "Outfit", sans-serif;
   background-color: black;
   color: white;

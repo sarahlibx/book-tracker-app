@@ -199,7 +199,6 @@ router.get('/:itemId', async (req, res) => {
     } catch (error) {
       console.log(error);
       res.render("error.ejs", { msg: error.message });
-      // res.redirect('/');
     }
   });
 

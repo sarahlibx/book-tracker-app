@@ -8,6 +8,7 @@
     <section class="page-section">
       <div class="page-content">
         <div class="edit-book-form">
+
           <h1 class="adding-book">Add a New Book to Your Shelf</h1>
 
           <form action="/users/<%= user._id %>/books/manual" method="POST">
@@ -15,7 +16,8 @@
             
             <section class="edit-boxes">
               <div class="input-box">
-                <!-- Title -->
+
+                <%# TITLE %>
                 <label for="title">Title:</label>
                 <input
                   type="text"
@@ -27,13 +29,13 @@
                 />
               </div>
 
-              <!-- Author -->
+              <%# AUTHOR %>
               <div class="input-box">
                 <label for="authors">Author:</label>
                 <input type="text" id="authors" name="authors" class="form-box" placeholder="required"/>
               </div>
 
-              <!-- Status -->
+              <%# STATUS %>
               <div class="input-box">
                 <label for="status">Status:</label>
                 <select id="status" name="status" class="form-box">
@@ -44,18 +46,18 @@
                 </select>
               </div>
 
-              <!-- Review -->
+              <%# REVIEW %>
               <div class="input-box">
                 <label for="review">Review:</label>
                 <textarea
                   name="review"
                   id="review"
-                  placeholder="Write your review..."
+                  placeholder="Optional: Write your review..."
                   class="form-box"
                 ></textarea>
               </div>
 
-              <!-- Rating -->
+              <%# RATING %>
               <div class="input-box">
                 <label for="rating">Rating:</label>
                 <fieldset class="rating">
@@ -69,6 +71,7 @@
                 </fieldset>
               </div>
             </section>
+
             <div class="update-btn-div">
             <button type="submit" class="update-btn">Add Book</button>
           </form>

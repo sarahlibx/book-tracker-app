@@ -9,6 +9,7 @@
       <div class="page-content">
         <h1 class="search">Search Books</h1>
 
+        <%# SEARCH BOX %>
         <section class="google-bookshelf">
           <div class="search-box">
             <form
@@ -28,7 +29,7 @@
               </button>
             </form>
 
-            <% if (results) { %>
+            <%# GOOGLE BOOKS RESULTS %> <% if (results) { %>
             <ul class="search-results">
               <% results.forEach(book => { %>
               <li class="searches">
@@ -57,6 +58,7 @@
                   />
                   <input type="hidden" name="source" value="google" />
 
+                  <%# ADD TO SHELF BTN %>
                   <button class="search-btn add-to-shelf">Add to Shelf</button>
                 </form>
               </li>
@@ -65,6 +67,8 @@
             <% } %>
           </div>
         </section>
+        <br />
+        <a href="/users/:userId/books">Go Back</a>
       </div>
     </section>
   </body>

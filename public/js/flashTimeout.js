@@ -1,3 +1,5 @@
+// public/js/flashTimeout.js for editing & adding books
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const flashMessage = document.getElementById('flash-message');
 

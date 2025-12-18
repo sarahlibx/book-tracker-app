@@ -1,3 +1,5 @@
+// public/js/deleteModal.js for deleting books
+
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('deleteModal');
   if (!modal) return; 
