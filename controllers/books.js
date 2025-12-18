@@ -38,6 +38,7 @@ try {
 router.get('/search', (req, res) => {
   try {
     res.render('books/search.ejs', { 
+      title: 'Search Books',
       user: req.session.user,
       results: null, 
       query: '' });
@@ -59,11 +60,11 @@ router.post('/search', async (req, res) => {
     const results = response.data.items.map(item => ({
       title: item.volumeInfo.title,
       authors: item.volumeInfo.authors || [],
-      thumbnail: item.volumeInfo.imageLinks?.thumbnail,
+      thumbnail: item.volumeInfo.imageLinks?.thumbnail || '/assets/no-book-cover.png',
       publishedDate: item.volumeInfo.publishedDate
     }));
 
-    res.render('books/search.ejs', { user: req.session.user, results, query, source: 'google' });
+    res.render('books/search.ejs', { title: 'Search Books', user: req.session.user, results, query, source: 'google' });
   } catch (err) {
     console.error(err);
     res.render('books/search.ejs', { results: [], query: '', error: err.message });
@@ -78,7 +79,7 @@ router.post('/google', async (req, res) => {
     user.bookshelf.push({
       title: req.body.title,
       authors: req.body.authors ? req.body.authors.split(',') : [],
-      thumbnail: req.body.thumbnail || '',
+      thumbnail: req.body.thumbnail || '/assets/no-book-cover.png',
       publishedDate: req.body.publishedDate || '',
       status: req.body.status || 'To Be Read',
       source: 'google'

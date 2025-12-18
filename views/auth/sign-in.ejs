@@ -9,14 +9,29 @@
 
         <section class="edit-boxes">
           <div class="auth-box">
-            <form action="/auth/sign-in" method="POST">
-              <label for="username">Username:</label>
-              <input type="text" name="username" id="username" />
+            <form class="auth-sign-in" action="/auth/sign-in" method="POST">
+              <label class="auth-input" for="username">Username:</label>
+              <input
+                class="auth-input"
+                type="text"
+                name="username"
+                id="username"
+              />
 
-              <label for="password">Password:</label>
-              <input type="password" name="password" id="password" />
-              <button type="submit">Sign in</button>
+              <label class="auth-input" for="password">Password:</label>
+              <input
+                class="auth-input"
+                type="password"
+                name="password"
+                id="password"
+              />
+              <button class="auth-btn auth-input" type="submit">Sign in</button>
             </form>
+            <br />
+            <p>
+              Don't have an account? Click <a href="/auth/sign-up">here </a>to
+              sign up!
+            </p>
           </div>
         </section>
       </div>

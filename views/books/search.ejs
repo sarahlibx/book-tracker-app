@@ -1,36 +1,72 @@
 <!-- views/books/search.ejs -->
-<h1>Search Books</h1>
 
-<form method="POST" action="/users/<%= user._id %>/books/search">
-  <input type="text" name="query" placeholder="Search books..." required />
-  <button type="submit">Search</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/_head.ejs") %>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <section class="page-section">
+      <div class="page-content">
+        <h1 class="search">Search Books</h1>
 
-<% if (results) { %>
-<ul>
-  <% results.forEach(book => { %>
-  <li>
-    <img src="<%= book.thumbnail %>" width="80" />
-    <strong><%= book.title %></strong>
+        <section class="google-bookshelf">
+          <div class="search-box">
+            <form
+              class="search-input"
+              method="POST"
+              action="/users/<%= user._id %>/books/search"
+            >
+              <input
+                class="search-input"
+                type="text"
+                name="query"
+                placeholder="Search books..."
+                required
+              />
+              <button class="search-btn search-input" type="submit">
+                Search
+              </button>
+            </form>
 
-    <form method="POST" action="/users/<%= user._id %>/books/google">
-      <input type="hidden" name="title" value="<%= book.title %>" />
-      <input
-        type="hidden"
-        name="authors"
-        value="<%= book.authors.join(',') %>"
-      />
-      <input type="hidden" name="thumbnail" value="<%= book.thumbnail %>" />
-      <input
-        type="hidden"
-        name="publishedDate"
-        value="<%= book.publishedDate %>"
-      />
-      <input type="hidden" name="source" value="google" />
+            <% if (results) { %>
+            <ul class="search-results">
+              <% results.forEach(book => { %>
+              <li class="searches">
+                <img src="<%= book.thumbnail %>" width="80" height="120" />
+                <strong><%= book.title %></strong>
 
-      <button>Add to Shelf</button>
-    </form>
-  </li>
-  <% }) %>
-</ul>
-<% } %>
+                <form
+                  method="POST"
+                  action="/users/<%= user._id %>/books/google"
+                >
+                  <input type="hidden" name="title" value="<%= book.title %>" />
+                  <input
+                    type="hidden"
+                    name="authors"
+                    value="<%= book.authors.join(',') %>"
+                  />
+                  <input
+                    type="hidden"
+                    name="thumbnail"
+                    value="<%= book.thumbnail %>"
+                  />
+                  <input
+                    type="hidden"
+                    name="publishedDate"
+                    value="<%= book.publishedDate %>"
+                  />
+                  <input type="hidden" name="source" value="google" />
+
+                  <button class="search-btn add-to-shelf">Add to Shelf</button>
+                </form>
+              </li>
+              <% }) %>
+            </ul>
+            <% } %>
+          </div>
+        </section>
+      </div>
+    </section>
+  </body>
+  <%- include("../partials/_footer.ejs") %>
+</html>

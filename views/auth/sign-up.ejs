@@ -3,16 +3,34 @@
 <html lang="en">
   <%- include("../partials/_head.ejs") %>
   <body>
-    <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
-      <button type="submit">Sign up</button>
-    </form>
+    <section class="page-section">
+      <div class="page-content">
+        <h1>Create a new account!</h1>
+        <form action="/auth/sign-up" method="POST">
+          <label class="auth-input" for="username">Username:</label>
+          <input class="auth-input" type="text" name="username" id="username" />
+          <label class="auth-input" for="password">Password:</label>
+          <input
+            class="auth-input"
+            type="password"
+            name="password"
+            id="password"
+          />
+          <label class="auth-input" for="confirmPassword"
+            >Confirm Password:</label
+          >
+          <input
+            class="auth-input"
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+          />
+          <button class="auth-btn auth-input" type="submit">Sign up</button>
+        </form>
+        <br />
+        <a href="/">Go Back</a>
+      </div>
+    </section>
   </body>
   <%- include("../partials/_footer.ejs") %>
 </html>
