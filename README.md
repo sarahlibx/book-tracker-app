@@ -80,3 +80,5 @@
 - Modify sign up/sign in routes to normalize username's with capital or lowercase letters (to prevent sign in errors!)
 
 - Improve Error.ejs page to display error message for the given error, rather than just 'error'
+
+- Refactor for mobile first design/responsive styles
