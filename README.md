@@ -73,6 +73,13 @@
   >
 </details>
 
+## :books: Resources Used
+
+### [GitHub Auth Template](https://github.com/sarahlibx/men-stack-session-auth)
+### [Consuming an API Lecture](https://generalassembly.instructure.com/courses/1243/pages/consuming-an-api?module_item_id=134107)
+### [Setting up Google Books API](https://www.google.com/?client=safari)
+### [CSS Tricks](https://css-tricks.com)
+
 ## :satellite: Upcoming Features
 
 - Filter bookshelf A-Z or by highest rated; display top 3 "favorites" at top of bookshelf
